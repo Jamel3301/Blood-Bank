@@ -8,6 +8,7 @@ class ReportProblem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Text(
           'سيتم توفير هذة الخدمة في اقرب وقت',

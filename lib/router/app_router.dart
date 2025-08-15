@@ -5,11 +5,13 @@ import 'package:blood_bank/router/app_router.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(page: Home.page),
+    AutoRoute(page: Map.page),
     AutoRoute(page: Signin.page),
     AutoRoute(page: Signup.page),
+    AutoRoute(page: Profile.page),
+    AutoRoute(page: BloodBank.page, initial: true),
+    AutoRoute(page: RequestList.page),
     AutoRoute(page: ReportProblem.page),
     AutoRoute(page: ForgotPassword.page),
-    AutoRoute(page: Opining.page, initial: true),
   ];
 }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,6 +48,10 @@ class _MyTextFieldState extends State<MyTextField> {
     }
   }
 
+  TextAlign _getTextAlign(TextDirection direction) {
+    return direction == TextDirection.rtl ? TextAlign.right : TextAlign.left;
+  }
+
   @override
   void dispose() {
     if (widget.autoDetectLanguage) {
@@ -81,10 +87,6 @@ class _MyTextFieldState extends State<MyTextField> {
     }
   }
 
-  TextAlign _getTextAlign(TextDirection direction) {
-    return direction == TextDirection.rtl ? TextAlign.right : TextAlign.left;
-  }
-
   bool _isTextEnglish(String text) {
     if (text.isEmpty) return false;
     final englishCount = RegExp(r'[a-zA-Z0-9]').allMatches(text).length;
@@ -109,6 +111,7 @@ class _MyTextFieldState extends State<MyTextField> {
   @override
   Widget build(BuildContext context) {
     Color primaryColor = Color(0xFFE1393A);
+    Color whiteColor = Color(0xFF000000);
     Color? backgroundColor = Colors.grey[200];
     TextStyle style = TextStyle(
       color: primaryColor,
@@ -116,6 +119,7 @@ class _MyTextFieldState extends State<MyTextField> {
       fontSize: 14.sp,
     );
     return TextFormField(
+      cursorColor: whiteColor,
       controller: widget.controller,
       obscureText: widget.isPassword,
       textDirection: _textDirection,

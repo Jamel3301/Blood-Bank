@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,7 +12,6 @@ void main() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-
   runApp(const MyApp());
 }
 
@@ -26,17 +23,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool isLoggingIn = false;
+
   @override
-  void initState() {
+  initState() {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print('===================');
-        print('User is signed out!');
-        print('===================');
+        isLoggingIn = false;
+        // print('===================');
+        // print('User is signed out!');
+        // print('===================');
       } else {
-        print('==================');
-        print('User is signed in!');
-        print('==================');
+        isLoggingIn = true;
+        // print('==================');
+        // print('User is signed in!');
+        // print('==================');
       }
     });
     super.initState();

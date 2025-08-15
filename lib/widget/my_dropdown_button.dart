@@ -27,6 +27,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
       fontWeight: FontWeight.w600,
       fontSize: 14.sp,
     );
+    TextStyle style2 = TextStyle(fontWeight: FontWeight.w600, fontSize: 14.sp);
     String? selectedValue;
     return DropdownButtonFormField2(
       alignment: Alignment.centerRight,
@@ -35,7 +36,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
             (item) => DropdownMenuItem(
               alignment: Alignment.centerRight,
               value: item,
-              child: Text(item, style: style),
+              child: Text(item, style: style2),
             ),
           )
           .toList(),
