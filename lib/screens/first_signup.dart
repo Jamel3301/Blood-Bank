@@ -4,25 +4,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:blood_bank/widget/my_text_field.dart';
 import 'package:blood_bank/router/app_router.gr.dart';
 import 'package:blood_bank/widget/my_report_problem.dart';
-// import 'package:blood_bank/widget/my_dropdown_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:blood_bank/widget/my_text_inside_container.dart';
 
 @RoutePage()
-class Signup extends StatefulWidget {
-  const Signup({super.key});
+class FirstSignup extends StatefulWidget {
+  const FirstSignup({super.key});
 
   @override
-  State<Signup> createState() => _SignupState();
+  State<FirstSignup> createState() => _FirstSignupState();
 }
 
-class _SignupState extends State<Signup> {
-  TextEditingController userName = TextEditingController();
-  TextEditingController phoneNumber = TextEditingController();
+class _FirstSignupState extends State<FirstSignup> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-  List<String> items = ['الموصل'];
-  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +27,11 @@ class _SignupState extends State<Signup> {
       color: backgroundColor,
       fontWeight: FontWeight.w500,
       fontSize: 18.sp,
+    );
+    TextStyle style = TextStyle(
+      color: primaryColor,
+      fontWeight: FontWeight.w600,
+      fontSize: 14.sp,
     );
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -55,22 +55,6 @@ class _SignupState extends State<Signup> {
               height: 150.h,
               child: Image.asset('assets/images/logo.png'),
             ),
-            // MyTextField(
-            //   hintText: 'ادخل اسم المستخدم',
-            //   isPassword: false,
-            //   icon: Icons.person,
-            //   controller: userName,
-            //   inputType: InputType.text,
-            // ),
-            // SizedBox(height: 15.h),
-            // MyTextField(
-            //   hintText: 'ادخل رقم الهاتف',
-            //   isPassword: false,
-            //   icon: Icons.phone,
-            //   controller: phoneNumber,
-            //   inputType: InputType.phoneNumber,
-            // ),
-            // SizedBox(height: 15.h),
             MyTextField(
               hintText: 'ادخل البريد الالكتروني',
               isPassword: false,
@@ -86,12 +70,6 @@ class _SignupState extends State<Signup> {
               controller: password,
             ),
             SizedBox(height: 15.h),
-            // MyDropdownButton(
-            //   hint: 'اختر محافظة',
-            //   items: items,
-            //   icon: Icons.place_outlined,
-            // ),
-            // SizedBox(height: 15.h),
             MyTextInsideContainer(
               title: 'انشاء الحساب',
               containerWidth: 150.w,
@@ -103,7 +81,7 @@ class _SignupState extends State<Signup> {
                     email: email.text,
                     password: password.text,
                   );
-                  context.router.replace(Signin());
+                  context.router.replace(SecondSignup());
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'weak-password') {
                     print('==================================');
@@ -120,6 +98,58 @@ class _SignupState extends State<Signup> {
                   print('==========================================');
                 }
               },
+            ),
+            SizedBox(height: 15.h),
+            Row(
+              children: [
+                Spacer(flex: 1),
+                Expanded(
+                  flex: 4,
+                  child: Container(
+                    height: 1.h,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                    ),
+                  ),
+                ),
+                Text('  أو  ', style: style),
+                Expanded(
+                  flex: 4,
+                  child: Container(
+                    height: 1.h,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                    ),
+                  ),
+                ),
+                Spacer(flex: 1),
+              ],
+            ),
+            SizedBox(
+              height: 45.h,
+              width: 150.w,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Image.asset(
+                      'assets/images/apple.png',
+                      color: primaryColor,
+                    ),
+                  ),
+                  SizedBox(width: 40.w),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Image.asset(
+                      'assets/images/google.png',
+                      color: primaryColor,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

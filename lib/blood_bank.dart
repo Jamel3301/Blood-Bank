@@ -29,13 +29,13 @@ class BloodBank extends StatelessWidget {
           MyTextInsideContainer(
             title: 'إنشاء حساب',
             onPressed: () {
-              context.router.push(Signup());
+              context.router.push(FirstSignup());
             },
             containerColor: primaryColor,
           ),
           SizedBox(height: 5.h),
           MyTextInsideContainer(
-            title: 'الشاشة الرئيسية',
+            title: 'HOME',
             onPressed: () {
               context.router.push(RequestList());
             },

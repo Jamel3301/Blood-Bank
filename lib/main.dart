@@ -23,18 +23,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool isLoggingIn = false;
-
   @override
   initState() {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        isLoggingIn = false;
         // print('===================');
         // print('User is signed out!');
         // print('===================');
       } else {
-        isLoggingIn = true;
         // print('==================');
         // print('User is signed in!');
         // print('==================');

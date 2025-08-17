@@ -7,7 +7,8 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
     AutoRoute(page: Map.page),
     AutoRoute(page: Signin.page),
-    AutoRoute(page: Signup.page),
+    AutoRoute(page: FirstSignup.page),
+    AutoRoute(page: SecondSignup.page),
     AutoRoute(page: Profile.page),
     AutoRoute(page: BloodBank.page, initial: true),
     AutoRoute(page: RequestList.page),

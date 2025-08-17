@@ -42,8 +42,8 @@ class _SigninState extends State<Signin> {
     );
     TextStyle style = TextStyle(
       color: primaryColor,
-      fontWeight: FontWeight.bold,
-      fontSize: 12.sp,
+      fontWeight: FontWeight.w600,
+      fontSize: 14.sp,
     );
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -131,11 +131,11 @@ class _SigninState extends State<Signin> {
               textStyle: buttonStyle,
               onPressed: () async {
                 try {
-                  final credential = await FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                        email: typeSignin.text,
-                        password: password.text,
-                      );
+                  // final credential =
+                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: typeSignin.text,
+                    password: password.text,
+                  );
                   // if (credential.user!.emailVerified) {
                   context.router.replace(RequestList());
                   // }

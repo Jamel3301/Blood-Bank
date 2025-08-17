@@ -10,11 +10,11 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     Color primaryColor = Color(0xFFE1393A);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(automaticallyImplyLeading: false),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(children: [Text('data')]),
+          Column(children: []),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Row(
