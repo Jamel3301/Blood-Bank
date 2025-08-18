@@ -7,11 +7,13 @@ class MyDropdownButton extends StatefulWidget {
     super.key,
     required this.hint,
     required this.items,
+    required this.getValue,
     this.icon = Icons.error,
   });
   final String hint;
   final List<String> items;
   final IconData icon;
+  final Function(String) getValue;
 
   @override
   State<MyDropdownButton> createState() => _MyDropdownButtonState();
@@ -45,6 +47,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
         setState(() {
           selectedValue = value;
         });
+        widget.getValue(selectedValue ?? '');
       },
       isExpanded: true,
       hint: Text(widget.hint, style: style),

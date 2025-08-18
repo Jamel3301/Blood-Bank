@@ -14,7 +14,7 @@ class RequestList extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(children: []),
+          Expanded(child: ListView(children: [])),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Row(

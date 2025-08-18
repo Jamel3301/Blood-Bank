@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:blood_bank/widget/my_text_field.dart';
 import 'package:blood_bank/router/app_router.gr.dart';
 import 'package:blood_bank/widget/my_report_problem.dart';
-// import 'package:blood_bank/widget/my_dropdown_button.dart';
+import 'package:blood_bank/widget/my_dropdown_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:blood_bank/widget/my_text_inside_container.dart';
 
@@ -20,7 +20,7 @@ class _SecondSignupState extends State<SecondSignup> {
   TextEditingController userName = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   List<String> items = ['الموصل'];
-  String? selectedValue;
+  String selectedValue = '';
 
   @override
   Widget build(BuildContext context) {
@@ -69,12 +69,15 @@ class _SecondSignupState extends State<SecondSignup> {
               inputType: InputType.phoneNumber,
             ),
             SizedBox(height: 15.h),
-            // MyDropdownButton(
-            //   hint: 'اختر محافظة',
-            //   items: items,
-            //   icon: Icons.place_outlined,
-            // ),
-            // SizedBox(height: 15.h),
+            MyDropdownButton(
+              hint: 'اختر محافظة',
+              items: items,
+              icon: Icons.place_outlined,
+              getValue: (value) {
+                selectedValue = value;
+              },
+            ),
+            SizedBox(height: 15.h),
             MyTextInsideContainer(
               title: 'انشاء الحساب',
               containerWidth: 150.w,
@@ -86,6 +89,7 @@ class _SecondSignupState extends State<SecondSignup> {
                 collRef.add({
                   'user name': userName.text,
                   'phone number': phoneNumber.text,
+                  'city': selectedValue,
                 });
                 context.router.replace(Signin());
               },
